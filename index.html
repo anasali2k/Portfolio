@@ -627,6 +627,23 @@ main:before{display:none!important;}
 #skills .skill-icon{font-size:18px!important;}
 #skills .skill-icon.has-uploaded-icon{width:28px!important;height:28px!important;}
 #footerLinks{grid-template-columns:1fr!important;}
+
+
+/* Requested minor hero adjustments: remove hero social icons and reduce excess height */
+#heroContent{height:auto!important;min-height:0!important;padding:0!important;}
+#heroContent .hero-grid{min-height:0!important;height:auto!important;padding:10px 0!important;align-items:center!important;gap:16px!important;}
+#heroContent .hero-copy{min-height:0!important;padding:0!important;}
+#heroContent .hero .hero-pitch,#heroContent .hero-pitch{height:auto!important;min-height:0!important;max-height:none!important;align-self:center!important;padding:12px!important;justify-content:center!important;}
+#heroContent .hero-pitch h2{margin:8px 0 10px!important;}
+#heroContent .hero-profile{padding-bottom:8px!important;}
+#heroContent .checklist{gap:8px!important;}
+@media(max-width:760px){#heroContent .hero-grid{padding:9px 0!important;gap:10px!important;}#heroContent .hero-pitch{padding:11px!important;}#heroContent .hero-profile{padding-bottom:7px!important;}#heroContent .hero-pitch h2{margin:7px 0 9px!important;}}
+
+
+/* Requested subtle spacing between the hero, dashboard and lower content rows */
+#heroContent + .section{padding-top:12px!important;}
+#skills{margin-bottom:8px!important;}
+@media(max-width:760px){#heroContent + .section{padding-top:10px!important;}#skills{margin-bottom:7px!important;}}
 </style>
 </head>
 <body>
@@ -636,7 +653,7 @@ main:before{display:none!important;}
 
 </section>
 <main>
-<section class="hero" id="heroContent"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow" id="heroEyebrow">Digital creative portfolio</div><div class="hello" id="heroHello">Hello, I'm</div><h1><span class="name-gradient" id="heroName">Anas Ali</span></h1><div class="role" id="heroRole">Social Media Marketing Expert <span>|</span> Graphic Designer &amp; Video Editor</div><p class="intro" id="heroIntro">I help brands grow online through powerful social media strategies, creative designs and engaging content.</p><div class="actions"><a class="btn" href="#projects" id="heroCta">View My Portfolio &nbsp;→</a><a class="btn outline" href="#contact" id="heroCta2">Download CV &nbsp;⇩</a></div><div class="socials" id="heroSocials"></div></div><div class="hero-pitch"><div class="hero-profile"><div class="profile-photo" id="profilePhoto"><span>＋ Add your photo</span><img alt="Anas Ali profile photo"></div><div class="hero-personal" id="heroPersonal"></div></div><h2 id="pitchTitle">Grow Your Brand<br>With <em>My Expertise</em></h2><div class="checklist" id="heroChecklist"></div></div></div></div></section>
+<section class="hero" id="heroContent"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow" id="heroEyebrow">Digital creative portfolio</div><div class="hello" id="heroHello">Hello, I'm</div><h1><span class="name-gradient" id="heroName">Anas Ali</span></h1><div class="role" id="heroRole">Social Media Marketing Expert <span>|</span> Graphic Designer &amp; Video Editor</div><p class="intro" id="heroIntro">I help brands grow online through powerful social media strategies, creative designs and engaging content.</p><div class="actions"><a class="btn" href="#projects" id="heroCta">View My Portfolio &nbsp;→</a><a class="btn outline" href="#contact" id="heroCta2">Download CV &nbsp;⇩</a></div></div><div class="hero-pitch"><div class="hero-profile"><div class="profile-photo" id="profilePhoto"><span>＋ Add your photo</span><img alt="Anas Ali profile photo"></div><div class="hero-personal" id="heroPersonal"></div></div><h2 id="pitchTitle">Grow Your Brand<br>With <em>My Expertise</em></h2><div class="checklist" id="heroChecklist"></div></div></div></div></section>
 <section class="section"><div class="wrap dashboard">
 <article class="panel" id="about"><div class="panel-body"><div class="section-head"><span class="section-icon" id="icon-about">♟</span><div><h2 id="aboutTitle">About Me</h2><p>Get to know me</p></div></div><div class="about-inner"><div><p id="aboutText">I'm Anas Ali, a passionate and results-driven Social Media Marketer, Graphic Designer and Video Editor. With 10+ years of professional experience, I specialize in creating impactful digital strategies, stunning visuals and engaging content.</p></div><div class="about-photo" id="aboutPhoto"><span>＋ Upload<br>about photo</span><img alt="About Anas Ali"></div></div></div></article>
 <article class="panel" id="services"><div class="panel-body"><div class="section-head"><span class="section-icon service-brand-mark" id="icon-services" aria-label="Services mark"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="11" height="11" rx="3"/><rect x="24" y="6" width="11" height="11" rx="3"/><rect x="5" y="23" width="11" height="11" rx="3"/><path d="m28 22 2 4.4 4.5 2-4.5 2-2 4.6-2-4.6-4.5-2 4.5-2 2-4.4Z"/></svg></span><div><h2 id="servicesTitle">My Services</h2><p>What I offer</p></div></div><div class="services-grid" id="servicesGrid"></div></div></article>
@@ -710,7 +727,7 @@ const pitch=(data.pitchTitle||'').split('\\n');document.getElementById('pitchTit
 const fs=(data.footerSlogan||'').split('\\n');document.getElementById('footerSlogan').innerHTML=esc(fs[0]||'Turn Your Ideas')+'<br><span style="color:#ffd339">'+esc((fs[1]||'Into Reality').replace(/^Into\s*/,''))+'</span>';
 const c=document.getElementById('heroChecklist');c.innerHTML=(data.heroChecklist||[]).map(x=>`<div class="check"><i>✓</i>${esc(x)}</div>`).join('');
 document.getElementById('heroPersonal').innerHTML=`<span><b>${esc(data.age||'')}</b></span><span><b>${esc(data.marital||'')}</b></span><span class="personal-location"><b>${esc(data.location||'')}</b></span>`;
-const social=(data.socials||[]).map(x=>`<a class="social3d ${socialClass(x.name)}" href="${esc(x.url||'#')}" target="_blank" rel="noopener" aria-label="${esc(x.name)}" title="${esc(x.name)}">${socialMark(x)}</a>`).join('');document.getElementById('heroSocials').innerHTML=social;document.getElementById('footerSocials').innerHTML=social;
+const social=(data.socials||[]).map(x=>`<a class="social3d ${socialClass(x.name)}" href="${esc(x.url||'#')}" target="_blank" rel="noopener" aria-label="${esc(x.name)}" title="${esc(x.name)}">${socialMark(x)}</a>`).join('');document.getElementById('footerSocials').innerHTML=social;
 document.getElementById('servicesGrid').innerHTML=(data.services||[]).map((x,i)=>`<div class="service-card"><span class="service-icon" data-service-icon="${i}">${serviceMark(x.name,x.icon)}</span><b>${esc(x.name)}</b></div>`).join('');
 document.getElementById('skillsList').innerHTML=(data.skills||[]).map((x,i)=>{const level=Math.max(0,Math.min(100,+x.level||0));return `<div class="skill" title="${level}% proficiency"><span class="skill-icon" data-skill-icon="${i}">${esc(x.icon||'✦')}</span><span>${esc(x.name)}</span><span class="track"><i style="width:${level}%"></i></span><strong>${skillLabel(level)}</strong></div>`}).join('');
 document.getElementById('experienceList').innerHTML=(data.experience||[]).map(x=>`<div class="experience-row"><span class="dot"></span><div><b>${esc(x.period)} &nbsp; ${esc(x.company)}</b><span>${esc(x.role)}</span></div></div>`).join('');
