@@ -563,6 +563,21 @@ main:before{display:none!important;}
 #goTopBtn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 24px #24105a55,inset 0 1px 3px #ffffff90;}
 #goTopBtn:focus-visible{outline:3px solid #ffd866;outline-offset:3px;}
 @media(max-width:760px){#goTopBtn{right:15px;bottom:88px;width:43px;height:43px;font-size:21px;}}
+
+
+/* User-requested correction: compact and align About Me and Our Services */
+#about .panel-body,#services .panel-body{height:100%;}
+#about .section-head,#services .section-head{margin-bottom:10px;}
+#about .about-inner{grid-template-columns:minmax(0,1fr) 190px!important;gap:12px!important;align-items:start!important;}
+#about .about-inner p{margin-top:0!important;}
+#about .about-photo{min-height:220px!important;height:220px!important;margin:0 4px 0 0!important;padding:0!important;}
+#about .about-photo img{inset:0!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover!important;object-position:center center!important;}
+#services .services-grid{align-content:start;gap:8px!important;padding:3px 5px 5px!important;}
+#services .service-card{min-height:88px!important;padding:9px 7px 8px!important;}
+#services .service-icon{width:44px!important;height:44px!important;flex-basis:44px!important;margin-bottom:7px!important;}
+@media(max-width:1080px){#about .about-inner{grid-template-columns:minmax(0,1fr) 170px!important;}#about .about-photo{height:200px!important;min-height:200px!important;}}
+@media(max-width:760px){#about .about-inner{grid-template-columns:minmax(0,1fr) 140px!important;gap:10px!important;}#about .about-photo{height:185px!important;min-height:185px!important;}#services .service-card{min-height:82px!important;}}
+@media(max-width:420px){#about .about-inner{grid-template-columns:minmax(0,1fr) 110px!important;}#about .about-photo{height:170px!important;min-height:170px!important;}}
 </style>
 </head>
 <body>
